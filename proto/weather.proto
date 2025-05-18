@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package weather;
+option go_package = "grpc-demo/proto";
+
+service WeatherService {
+  rpc GetWeather(WeatherRequest) returns (WeatherResponse) {}
+  rpc GetWeatherStream(WeatherRequest) returns (stream WeatherResponse) {}
+}
+
+message WeatherRequest {
+  string city = 1;
+}
+
+message WeatherResponse {
+  string city = 1;
+  float temperature = 2;
+  string conditions = 3;
+  float humidity = 4;
+  float wind_speed = 5;
+  string updated_at = 6;
+}
